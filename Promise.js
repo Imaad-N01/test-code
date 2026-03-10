@@ -1,23 +1,23 @@
-// const promiseOne = new Promise(function(resolve,reject){
-//     setTimeout(function(){
-//         console.log("Async Promise ");
-//         resolve()
-//     },1000)
-// })
-// promiseOne.then(function(){
-//     console.log("Async Promise Resolved")
-// })
-//***************************************************************************
-// new Promise(function(resolve,reject){
-//     setTimeout(function(){
-//         console.log("Async Promise Part 2");
-//         resolve()
+const promiseOne = new Promise(function(resolve,reject){
+    setTimeout(function(){
+        console.log("Async Promise ");
+        resolve()
+    },1000)
+})
+promiseOne.then(function(){
+    console.log("Async Promise Resolved")
+})
+***************************************************************************
+new Promise(function(resolve,reject){
+    setTimeout(function(){
+        console.log("Async Promise Part 2");
+        resolve()
         
-//     },1000)
-// }).then(function(){
-//     console.log("Async Promise Part 2 Resolved");
+    },1000)
+}).then(function(){
+    console.log("Async Promise Part 2 Resolved");
     
-// })
+})
 const promiseBro = new Promise((resolve,reject)=>{
     setTimeout(()=>{
         let error = true;
