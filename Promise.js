@@ -7,7 +7,7 @@ const promiseOne = new Promise(function(resolve,reject){
 promiseOne.then(function(){
     console.log("Async Promise Resolved")
 })
-***************************************************************************
+// ***************************************************************************
 new Promise(function(resolve,reject){
     setTimeout(function(){
         console.log("Async Promise Part 2");
