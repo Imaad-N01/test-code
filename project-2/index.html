@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<<style>
+        body {
+            background-color: #212121;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+        }
+
+        .card {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+            display: none; /* Hide card initially */
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Card to display user information -->
+    <div class="card" id="userCard">
+        <img id="userPhoto" src="" alt="User Photo">
+        <h2 id="userName"></h2>
+        <p id="userFollowers"></p>
+    </div>
+    
+    <!-- Button to fetch and display data -->
+    <button class="btn" id="fetchDataBtn">Show User Info</button>
+
+    <script>
+        const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+        const xhr = new XMLHttpRequest();
+
+        // Function to fetch data when button is clicked
+        document.getElementById('fetchDataBtn').onclick = function() {
+            xhr.open('GET', requestUrl, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText); // Use xhr.responseText directly
+
+                    // Updating card content with API data
+                    document.getElementById('userPhoto').src = data.avatar_url;
+                    document.getElementById('userName').innerText = data.name || "No Name Provided";
+                    document.getElementById('userFollowers').innerText = `Followers: ${data.followers}`;
+
+                    // Show the card
+                    document.getElementById('userCard').style.display = 'block';
+                }
+            };
+            xhr.send();
+        };
+    </script>
+</body>
+</html>
